@@ -16,7 +16,7 @@ def isnsfw(message):
 
 
 def good_to_answer(self,message):
-    if message.channel.id!=1184539017241440396:
+    if message.channel.id!=int(os.getenv('CHANNEL_5INQ')):
         return
     if message.author == self.user:
         return
@@ -32,3 +32,6 @@ def good_to_answer(self,message):
         # return
     
     return 1
+
+
+# 자체 모델로 전환 시급. 비용을 많이 아낄 수 있을 것...... => 아닌가?

@@ -23,3 +23,6 @@ class BotClient(discord.Client):
             return message
 intents = discord.Intents.default()
 intents.message_content = True
+
+
+# 분활화 필요. discord bot control만 해야 하는데 이놈이 다 하고 있음. 전문가의 도음 필요..

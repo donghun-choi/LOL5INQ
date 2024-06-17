@@ -24,5 +24,6 @@ def response(
             max_tokens          = max_tokens,
             frequency_penalty    = frequency_penalty
     )
-        
     return response.text
+
+# 가자 ㅇ예쁜 코드.

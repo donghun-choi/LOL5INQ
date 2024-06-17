@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 load_dotenv(verbose=True)
 
-uri = f"mongodb+srv://choidonghun:{os.getenv('MONGODBPW')}@chats.9uyaxhm.mongodb.net/?retryWrites=true&w=majority&appName=chats"
+uri = f"mongodb+srv://{os.getenv('MONGODB_UNAME')}:{os.getenv('MONGODB_PW')}@{os.getenv('MONGODB_DB')}"
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 today = datetime.today()
@@ -27,3 +27,6 @@ def add_chat_to_db(information):
         }
     
     tcollection.insert_one(post).inserted_id
+    
+    
+#TODO : 누가 봐도 개 #@$같이 짠 코드입니다. 빨리 고쳐야 함...
