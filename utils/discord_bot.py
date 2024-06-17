@@ -1,6 +1,6 @@
 import discord
 from utils import cohere_res
-from utils.dbcontrol import add_chat_to_db
+from utils.db_control import add_chat_to_db
 from .nlp import classifier
 import os
 testmode = 0
@@ -13,9 +13,9 @@ class BotClient(discord.Client):
     async def on_message(self, message):
         add_chat_to_db(message)
         if classifier.good_to_answer(self,message):
-            async with message.channel.typing():
+            async with message.channel.typing(): # Key UI. 답변이 생성되는 사이에 봇이 입력중 . . . 띄움 => 어디에 입력중이 뜨는거지?
                 await message.channel.send(
-                    cohere_res.response(
+                    cohere_res.get_response(
                         message.content,
                         preamble=os.getenv('main_t')
                         )

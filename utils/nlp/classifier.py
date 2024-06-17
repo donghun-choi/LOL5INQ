@@ -3,7 +3,7 @@ import os
 
 def notforme(message):
     # print(os.getenv('isthisforme_t'))
-    return cohere_res.response(
+    return cohere_res.get_response(
         message,
         preamble=os.getenv('isthisforme_t'),
         # model='command-r'
