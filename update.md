@@ -25,4 +25,4 @@
 
 ### 이전 업데이트들
 
-#### [update.log](./updates)
+#### [update.log](./updates)에서 확인 가능합니다

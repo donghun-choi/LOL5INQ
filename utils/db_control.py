@@ -1,6 +1,7 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
+import pytz
 from dotenv import load_dotenv
 from datetime import datetime
 load_dotenv(verbose=True)
@@ -16,19 +17,18 @@ tcollection = client['chat'][day]
 
 
 def add_chat_to_db(message:any): # #TODO : 함수명 구려요
-    # print('보낸 이 :',message.author)
-    # print('내용 :', message.content)
-    # print('시간 : ', )
-    
     post = {
         "author":   str(message.author),
         "text":     str(message.content),
-        "date":     str(datetime.now()), # => TODO : message에 과연 보낸 시간 등의 정보는 포함되지 않을까? 그럴리는 없을 것 같은데.. 수정해 봅시다
+        "date":     str(CvtToLocalTime(message.created_at)), #=> 깔끔한 구현이라고는 안 하겠으나, 쩔 수 없음.
         }
-    
-    tcollection.insert_one(post).inserted_id
-    
-    
+    tcollection.insert_one(post).inserted_id #TODO : Sohould be fixed
+
+
+def CvtToLocalTime(input_utc_time_str):
+  kst_time = input_utc_time_str.astimezone(pytz.timezone('Asia/Seoul'))
+  return kst_time.strftime("%Y-%m-%d %H:%M:%S.%f")
+
 #TODO : 누가 봐도 개 #@$같이 짠 코드입니다. 빨리 고쳐야 함...
 
 # 이 위는 싹 다 함수화 시키거나 나가 뒤지거나 둘중에 하나만 해줍시다.

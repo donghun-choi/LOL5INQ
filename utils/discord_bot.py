@@ -12,17 +12,17 @@ class BotClient(discord.Client):
 
     async def on_message(self, message):
         add_chat_to_db(message)
-        if classifier.good_to_answer(self,message):
-            async with message.channel.typing(): # Key UI. 답변이 생성되는 사이에 봇이 입력중 . . . 띄움 => 어디에 입력중이 뜨는거지?
-                await message.channel.send(
-                    cohere_res.get_response(
-                        message.content,
-                        preamble=os.getenv('main_t')
-                        )
-                    )
-            return message
+        # if classifier.good_to_answer(self,message):
+        #     async with message.channel.typing(): # Key UI. 답변이 생성되는 사이에 봇이 입력중 . . . 띄움 => 어디에 입력중이 뜨는거지?
+        #         await message.channel.send(
+        #             cohere_res.get_response(
+        #                 message.content,
+        #                 preamble=os.getenv('main_t')
+        #                 )
+        #             )
+        #     return message
 intents = discord.Intents.default()
 intents.message_content = True
 
 
-# 분활화 필요. discord bot control만 해야 하는데 이놈이 다 하고 있음. 전문가의 도음 필요..
+# TODO : 분활화 필요. discord bot control만 해야 하는데 이놈이 다 하고 있음. 전문가의 도음 필요..

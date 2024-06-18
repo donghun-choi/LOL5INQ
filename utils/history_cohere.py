@@ -7,7 +7,7 @@ co = cohere.Client(os.getenv('COHERE_TOKEN'))
 
 def get_response(
             message           :str,
-    #       chat_hisory       :???    = None,
+            chat_hisory       :dict,
             preamble          :str    = None,
             model             :str    = 'command-r-plus', #=> may i server another..
             temperature       :float  = 1,
@@ -17,7 +17,7 @@ def get_response(
         
     response = co.chat(
             message           = message,
-    #       chat_history      = chat_hisory,
+            chat_history      = chat_hisory,
             preamble          = preamble,
             model             = model,
             temperature       = temperature,
