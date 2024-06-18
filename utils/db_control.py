@@ -11,9 +11,8 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 
 today = datetime.today()
 day = f"{today.year % 100}_{today.month:02d}_{today.day:02d}"
-print(day)
 
-tcollection = client['chat'][day]
+tcollection = client['chat'][day] #=> 없으면 만들어짐
 
 
 def add_chat_to_db(message:any): # #TODO : 함수명 구려요

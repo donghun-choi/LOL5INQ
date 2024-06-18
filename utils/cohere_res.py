@@ -26,5 +26,4 @@ def get_response(
     )
     return response.text
 
-# 가자 ㅇ예쁜 코드.
 #TODO : Class화 시켜서 Main에서 쓸까?
