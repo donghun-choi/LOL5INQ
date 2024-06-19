@@ -1,0 +1,7 @@
+cohere==5.5.8
+discord.py==2.3.2
+pymongo==4.7.3
+python-dotenv==1.0.1
+pytz==2024.1
+Requests==2.32.3
+tokenizers==0.19.1
