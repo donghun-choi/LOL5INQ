@@ -12,7 +12,7 @@ def get_response(
             model             :str    = 'command-r-plus', #=> may i server another..
             temperature       :float  = 1,
             max_tokens        :int    = 128, #TODO => can be flexible with Input Length!!
-            frequency_penalty :float  = 1.0
+            presence_penalty :float  = 1.0
             ):
         
     response = co.chat(
@@ -22,7 +22,7 @@ def get_response(
             model             = model,
             temperature       = temperature,
             max_tokens        = max_tokens,
-            frequency_penalty = frequency_penalty
+            presence_penalty = presence_penalty
     )
     return response.text
 

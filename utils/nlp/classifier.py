@@ -1,7 +1,7 @@
 from utils import cohere_res
 import os
 
-def notforme(message):
+def is_not_forme(message):
     # print(os.getenv('isthisforme_t'))
     return cohere_res.get_response(
         message,
@@ -9,15 +9,15 @@ def notforme(message):
         # model='command-r'
         )
 
-def isnsfw(message):
+def is_nsfw(message):
     return cohere_res.response(
         message,
         preamble=os.getenv('nsfw_t'))
 
 
 def good_to_answer(self,message):
-    if message.channel.id!=int(os.getenv('CHANNEL_5INQ')):
-        return
+    # if message.channel.id!=int(os.getenv('CHANNEL_5INQ')):
+        # return
     if message.author == self.user:
         return
     
