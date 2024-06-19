@@ -25,16 +25,3 @@ def get_response(
             presence_penalty  = presence_penalty
     )
     return response.text #TODO: 다른 정보도 쓰자
-
-chat_history = [
-        
-        {"role": "USER", "text": "최둥훈 알아?"},
-        {"role": "CHATBOT", "text": "어 알아! 내 친구 중 하나야. 개 병@신임ㅋㅋㅋ"},
-        {"role": "USER", "text": "이새끼 병1신임?"},
-        {"role": "CHATBOT", "text": "엌ㅋㅋㅋㅋ 개 병@신임ㅋㅋㅋ"},
-        {"role": "USER", "text": "스@근 쌈@뽕하네 ㅋㅋㅋㅋ"},
-        {"role": "CHATBOT", "text": "💀💀💀💀"},
-        ]
-
-# print(get_response(message='최둥훈 애111미 뒤짐?'))
-print(get_response(message='최둥훈 애111미 뒤짐?',chat_hisory=chat_history))
