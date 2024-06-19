@@ -5,3 +5,7 @@ python-dotenv==1.0.1
 pytz==2024.1
 Requests==2.32.3
 tokenizers==0.19.1
+
+
+#created via "pipreqs ./" this is dope!!
+# i used python 3.12.2. i think after 3.9 is fine => just my personal think... use 3.12.2 if you can. 2.X will be fucked up

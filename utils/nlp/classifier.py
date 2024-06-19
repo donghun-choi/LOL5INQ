@@ -1,13 +1,16 @@
 from utils import cohere_res
 import os
 
-def is_not_forme(message):
+def is_not_for_me(message):
     # print(os.getenv('isthisforme_t'))
-    return cohere_res.get_response(
+    print(cohere_res.get_response(
         message,
-        preamble=os.getenv('isthisforme_t'),
+        model='command',
+        preamble=os.getenv('isthisforme_t_e'),
         # model='command-r'
         )
+    )
+    return 1
 
 def is_nsfw(message):
     return cohere_res.response(
@@ -23,7 +26,7 @@ def good_to_answer(self,message):
     
     # if message.
     
-    # isnotforme = int(notforme(message.content))
+    isnotforme = int(is_not_for_me(message.content))
     # print('나에게 온 메세지가 아니다 :',isnotforme)
     
     # if isnotforme:
