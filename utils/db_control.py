@@ -12,17 +12,30 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 today = datetime.today()
 day = f"{today.year % 100}_{today.month:02d}_{today.day:02d}"
 
-tcollection = client['chat'][day] #=> 없으면 만들어짐
+tcollection = client['chat1'][day] #=> 없으면 만들어짐
 
 
-def add_chat_to_db(message:any): # #TODO : 함수명 구려요
+def add_chat_to_db(message:any,data_response=None):
     post = {
         "author":   str(message.author),
         "text":     str(message.content),
         "date":     str(CvtToLocalTime(message.created_at)), #=> 깔끔한 구현이라고는 안 하겠으나, 쩔 수 없음.
+        "reply":    str(data_response)
         }
     tcollection.insert_one(post).inserted_id #TODO : Sohould be fixed
 
+def get_history(username: str):
+  chat_history=[]
+  cursor = tcollection.find({"author": str(username)})
+  
+  for doc in cursor:
+    # print(doc['text'],doc['reply'])
+    chat_history.append({"role": "USER", "text": f"{doc['text']}"},)
+    chat_history.append({"role": "CHATBOT", "text": f"{doc['reply']}"},)
+  
+  print(chat_history)
+  return chat_history
+    
 
 def CvtToLocalTime(input_utc_time_str):
   kst_time = input_utc_time_str.astimezone(pytz.timezone('Asia/Seoul'))

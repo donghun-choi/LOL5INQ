@@ -26,7 +26,7 @@ def good_to_answer(self,message):
     
     # if message.
     
-    isnotforme = int(is_not_for_me(message.content))
+    # isnotforme = int(is_not_for_me(message.content))
     # print('나에게 온 메세지가 아니다 :',isnotforme)
     
     # if isnotforme:

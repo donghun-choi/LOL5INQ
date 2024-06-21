@@ -7,7 +7,7 @@ co = cohere.Client(os.getenv('COHERE_TOKEN'))
 
 def get_response(
             message           :str,
-    #       chat_hisory       :???    = None,
+            chat_hisory       :list    = None,
             preamble          :str    = None,
             model             :str    = 'command-r-plus', #=> may i server another..
             temperature       :float  = 1,
@@ -17,13 +17,10 @@ def get_response(
         
     response = co.chat(
             message           = message,
-    #       chat_history      = chat_hisory,
             preamble          = preamble,
             model             = model,
             temperature       = temperature,
             max_tokens        = max_tokens,
             presence_penalty = presence_penalty
     )
-    return response.text
-
-#TODO : Class화 시켜서 Main에서 쓸까?
+    return response.text,response.chat_history
